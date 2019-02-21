@@ -1,20 +1,13 @@
 <?php
 $conn = mysqli_connect("localhost", "root", "1qaz2wsx", "phppractice");
+settype($_POST['id'], 'integer');
 $filtered = array(
-  'title'=>mysqli_real_escape_string($conn, $_POST['title']),
-  'description'=>mysqli_real_escape_string($conn, $_POST['description'])
+  'id'=>mysqli_real_escape_string($conn, $_POST['id'])
 );
 $sql = "
-INSERT INTO topic(
-    title,
-    description,
-    created_time
-    )
-  VALUE (
-    '{$filtered['title']}',
-    '{$filtered['description']}',
-    NOW()
-  )
+    DELETE
+      FROM phppractice.topic
+      WHERE id = {$filtered_id['id']}
   ";
 if (!mysqli_query($conn, $sql)) {
   echo 'system error';
