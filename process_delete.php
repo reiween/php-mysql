@@ -7,7 +7,7 @@ $filtered = array(
 $sql = "
     DELETE
       FROM phppractice.topic
-      WHERE id = {$filtered_id['id']}
+      WHERE id = {$filtered['id']}
   ";
 if (!mysqli_query($conn, $sql)) {
   echo 'system error';
@@ -15,7 +15,7 @@ if (!mysqli_query($conn, $sql)) {
 } else {
   echo "<script>
     alert(\"success\");
-    location.href=\'index.php\';
+    location.href=\"index.php\";
     </script>";
 }
 
